@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Form</title>
+    <style>
+        /* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh; /* Limits the height of the form */
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+}
+
+/* Form labels and inputs */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Button styles */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Predicting Inpatient Length of Stay</h1>
+    <form action="/predict" method="post">
+        <label for="gender">Gender (male/female): </label>
+        <input type="text" id="gender" name="gender" required><br><br>
+
+        <label for="age">Age: </label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="icu_nicu">ICU or NICU? </label>
+        <input type="text" id="icu_nicu" name="icu_nicu" required><br><br>
+
+        <label for="admission">Admission type (elective/emergency/newborn/urgent): </label>
+        <input type="text" id="admission" name="admission" required><br><br>
+
+        <!-- <label for="admission">Admission type:</label>
+        <select id="admission" name="admission" required>
+            <option value="elective">Elective</option>
+            <option value="emergency">Emergency</option>
+            <option value="newborn">Newborn</option>
+            <option value="urgent">Urgent</option>
+        </select>
+        <br><br> -->
+
+
+        <label for="insurance">Insurance type (government/medicaid/medicare/private/selfpay): </label>
+        <input type="text" id="insurance" name="insurance" required><br><br>
+
+        <label for="religion">Religion type (not specified/religious/unobtainable): </label>
+        <input type="text" id="religion" name="religion" required><br><br>
+
+        <label for="ethnicity">Ethnicity type (asian/black/african american/hispanic/latino/other/unknown/white): </label>
+        <input type="text" id="ethnicity" name="ethnicity" required><br><br>
+
+        <label for="marital_status">Marital status (divorced/life partner/married/separated/single/unknown (default)/widowed): </label>
+        <input type="text" id="marital_status" name="marital_status" required><br><br>
+
+        <!-- Blood column -->
+        <label for="blood">Blood column value: </label>
+        <input type="number" id="blood" name="blood" required><br><br>
+
+        <!-- Circulatory column -->
+        <label for="circulatory">Circulatory column value: </label>
+        <input type="number" id="circulatory" name="circulatory" required><br><br>
+
+        <!-- Congenital column -->
+        <label for="congenital">Congenital column value: </label>
+        <input type="number" id="congential" name="congenital" required><br><br>
+
+        <!-- Digestive column -->
+        <label for="digestive">Digestive column value: </label>
+        <input type="number" id="digestive" name="digestive" required><br><br>
+
+        <!-- Endocrine column -->
+        <label for="endocrine">Endocrine column value: </label>
+        <input type="number" id="endocrine" name="endocrine" required><br><br>
+
+        <!-- Genitourinary column -->
+        <label for="genitourinary">Genitourinary column value: </label>
+        <input type="number" id="genitourinary" name="genitourinary" required><br><br>
+
+        <!-- Infectious column -->
+        <label for="infectious">Infectious column value: </label>
+        <input type="number" id="infectious" name="infectious" required><br><br>
+
+        <!-- Injury column -->
+        <label for="injury">Injury column value: </label>
+        <input type="number" id="injury" name="injury" required><br><br>
+
+        <!-- Mental column -->
+        <label for="mental">Mental column value: </label>
+        <input type="number" id="mental" name="mental" required><br><br>
+
+        <!-- Misc column -->
+        <label for="misc">Misc column value: </label>
+        <input type="number" id="misc" name="misc" required><br><br>
+
+        <!-- Muscular column -->
+        <label for="muscular">Muscular column value: </label>
+        <input type="number" id="muscular" name="muscular" required><br><br>
+
+        <!-- Neoplasms column -->
+        <label for="neoplasms">Neoplasms column value: </label>
+        <input type="number" id="neoplasms" name="neoplasms" required><br><br>
+
+        <!-- Nervous column -->
+        <label for="nervous">Nervous column value: </label>
+        <input type="number" id="nervous" name="nervous" required><br><br>
+
+        <!-- Pregnancy column -->
+        <label for="pregnancy">Pregnancy column value: </label>
+        <input type="number" id="pregnancy" name="pregnancy" required><br><br>
+
+        <!-- Prenatal column -->
+        <label for="prenatal">Prenatal column value: </label>
+        <input type="number" id="prenatal" name="prenatal" required><br><br>
+
+        <!-- Respiratory column -->
+        <label for="respiratory">Respiratory column value: </label>
+        <input type="number" id="respiratory" name="respiratory" required><br><br>
+
+        <!-- Skin column -->
+        <label for="skin">Skin column value: </label>
+        <input type="number" id="skin" name="skin" required><br><br>
+
+        <button id="userDataForm" >Submit</button>
+    </form>
+    
+</body>
+</html>
